@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mieszkania na sprzedaż i wynajem — Jaracza 21, centrum Łodzi</title>
+  <meta name="description" content="Mieszkania w odrestaurowanej kamienicy Jaracza 21 w centrum Łodzi: na własność i na wynajem. Lokale w pełni wykończone, w stanie deweloperskim i do remontu.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <!-- Nagłówek (wspólny) -->
+  <header class="site-header" id="naglowek">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html" aria-label="Jaracza 21 — strona główna">
+        <span class="logo__mark">Jaracza <span class="logo__num">21</span></span>
+        <span class="logo__tagline">Odrestaurowane dziedzictwo z 1893 roku</span>
+      </a>
+      <div class="site-header__actions">
+        <a class="btn btn--outline site-header__cta" href="#kontakt">Zapytaj o mieszkanie <span class="arrow" aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-boczne">
+          <span class="menu-toggle__label">Menu</span>
+          <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu boczne (wspólne) -->
+  <div class="drawer" id="menu-boczne" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="drawer__backdrop" data-close></div>
+    <nav class="drawer__panel" aria-label="Główna nawigacja">
+      <button class="drawer__close" type="button" data-close aria-label="Zamknij menu">Zamknij <span aria-hidden="true">✕</span></button>
+      <ul class="drawer__list">
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="mieszkania.html" aria-current="page">Mieszkania</a></li>
+        <li><a href="#">Historia kamienicy</a></li>
+        <li><a href="#">Okolica</a></li>
+        <li><a href="#">Kronika</a></li>
+        <li><a href="#">Aktualności</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="drawer__footer">
+        <a class="btn btn--gold" href="#kontakt">Zapytaj o mieszkanie <span class="arrow" aria-hidden="true">↗</span></a>
+        <p class="drawer__contact">
+          <span class="overline">Radosław Litwin</span>
+          <a href="tel:+48669903998">+48 669 903 998</a>
+        </p>
+        <p class="drawer__address">Łódź · ul. Jaracza 21</p>
+      </div>
+    </nav>
+  </div>
+
+  <main id="tresc">
+
+    <!-- M1. Hero podstrony -->
+    <section class="hero hero--page" aria-labelledby="page-title">
+      <div class="hero__media" aria-hidden="true">
+        <picture>
+          <source srcset="assets/img/mieszkania-hero.webp" type="image/webp">
+          <img class="hero__image" src="assets/img/mieszkania-hero.jpg" width="1920" height="1080" alt="">
+        </picture>
+        <div class="hero__shade"></div>
+      </div>
+
+      <div class="hero__content container">
+        <div class="hero__main">
+          <h1 class="hero__title hero__title--page" id="page-title">Wybierz swój nowy adres w&nbsp;centrum Łodzi</h1>
+          <div class="hero__links">
+            <a class="link-line link-line--light" href="#sprzedaz">Mieszkania na sprzedaż <span class="arrow" aria-hidden="true">↓</span></a>
+            <a class="link-line link-line--light" href="#wynajem">Mieszkania na wynajem <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- M2. Oferta: tekst klienta + karuzela lokali (zdjęcia i opisy przykładowe — do podmiany na dane klienta) -->
+    <section class="offer-intro section section--ivory" id="lista" aria-label="Oferta mieszkań">
+      <div class="container offer-intro__grid">
+        <p class="offer__text reveal">W zależności od potrzeb oferujemy lokale przeznaczone na własność lub na wynajem. Dostępne są unikatowe mieszkania w&nbsp;pełni wykończone, mieszkania w&nbsp;stanie deweloperskim oraz mieszkania do remontu.</p>
+        <figure class="offer-intro__image reveal">
+          <picture>
+            <source srcset="assets/img/wykusz.webp" type="image/webp">
+            <img src="assets/img/wykusz.jpg" width="800" height="1000" loading="lazy" alt="Wykusz z łukowym oknem na odnowionej fasadzie kamienicy">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <section class="offer section section--white" aria-labelledby="rent-title">
+      <div class="carousel reveal" id="wynajem" aria-roledescription="karuzela" aria-labelledby="rent-title">
+        <div class="container carousel__bar">
+          <h2 class="carousel__heading" id="rent-title">Mieszkania na wynajem</h2>
+          <div class="carousel__nav">
+            <button class="carousel__btn" type="button" data-dir="-1" aria-label="Poprzednie mieszkania na wynajem"><span aria-hidden="true">←</span></button>
+            <button class="carousel__btn" type="button" data-dir="1" aria-label="Następne mieszkania na wynajem"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <ul class="carousel__track" tabindex="0">
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/lokal-1.webp" type="image/webp"><img src="assets/img/lokal-1.jpg" width="1000" height="750" loading="lazy" alt="Salon z kuchnią i drewnianą wyspą, ściany w kolorze szałwii"></picture>
+            <h3 class="carousel__title">Mieszkanie 1</h3>
+            <p class="carousel__desc">Otwarty salon połączony z kuchnią i drewnianą wyspą. Ściany w kolorze szałwii i lampy nad blatem budują spokojny, ciepły klimat.</p>
+          </li>
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/lokal-2.webp" type="image/webp"><img src="assets/img/lokal-2.jpg" width="1000" height="750" loading="lazy" alt="Jasny pokój z dużym oknem i biurkiem"></picture>
+            <h3 class="carousel__title">Mieszkanie 2</h3>
+            <p class="carousel__desc">Jasny pokój z dużym oknem i miejscem do pracy przy parapecie. Wysokie wnętrze pełne naturalnego światła.</p>
+          </li>
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/lokal-3.webp" type="image/webp"><img src="assets/img/lokal-3.jpg" width="1000" height="750" loading="lazy" alt="Sofa w salonie, w tle zabudowa z drabiną na antresolę"></picture>
+            <h3 class="carousel__title">Mieszkanie 3</h3>
+            <p class="carousel__desc">Strefa wypoczynku z miękką sofą i widokiem na kuchnię. W tle zabudowa z drabiną prowadzącą na antresolę.</p>
+          </li>
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/lokal-4.webp" type="image/webp"><img src="assets/img/lokal-4.jpg" width="1000" height="750" loading="lazy" alt="Przedpokój z kinkietami i wazonem na stoliku"></picture>
+            <h3 class="carousel__title">Mieszkanie 4</h3>
+            <p class="carousel__desc">Przedpokój z kinkietami i delikatną sztukaterią na ścianach. Jasne, spokojne wnętrze, które wita od progu.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- M3. Mieszkania na sprzedaż (zdjęcia i opisy przykładowe — do podmiany na dane klienta) -->
+    <section class="offer offer--sale section section--ivory" aria-labelledby="sale-title">
+      <div class="carousel reveal" id="sprzedaz" aria-roledescription="karuzela" aria-labelledby="sale-title">
+        <div class="container carousel__bar">
+          <h2 class="carousel__heading" id="sale-title">Mieszkania na sprzedaż</h2>
+          <div class="carousel__nav">
+            <button class="carousel__btn" type="button" data-dir="-1" aria-label="Poprzednie mieszkania na sprzedaż"><span aria-hidden="true">←</span></button>
+            <button class="carousel__btn" type="button" data-dir="1" aria-label="Następne mieszkania na sprzedaż"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+
+        <ul class="carousel__track" tabindex="0">
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/sprzedaz-1.webp" type="image/webp"><img src="assets/img/sprzedaz-1.jpg" width="1000" height="750" loading="lazy" alt="Drewniane drzwi wejściowe do mieszkań przy korytarzu z mozaiką"></picture>
+            <h3 class="carousel__title">Mieszkanie 5</h3>
+            <p class="carousel__desc">Wejście z cichego korytarza wyłożonego mozaiką. Drewniane, odnowione drzwi podkreślają charakter kamienicy.</p>
+          </li>
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/sprzedaz-2.webp" type="image/webp"><img src="assets/img/sprzedaz-2.jpg" width="1000" height="750" loading="lazy" alt="Długi, jasny korytarz z posadzką z mozaiki"></picture>
+            <h3 class="carousel__title">Mieszkanie 6</h3>
+            <p class="carousel__desc">Lokal przy jasnym, wysokim korytarzu. Precyzyjnie wykończone części wspólne prowadzą prosto pod drzwi.</p>
+          </li>
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/sprzedaz-3.webp" type="image/webp"><img src="assets/img/sprzedaz-3.jpg" width="1000" height="750" loading="lazy" alt="Korytarz z drzwiami do mieszkań i mozaiką na posadzce"></picture>
+            <h3 class="carousel__title">Mieszkanie 7</h3>
+            <p class="carousel__desc">Mieszkanie w spokojnej części kamienicy. Klasyczna mozaika i ciemne drewno witają już na progu.</p>
+          </li>
+          <li class="carousel__slide">
+            <picture><source srcset="assets/img/sprzedaz-4.webp" type="image/webp"><img src="assets/img/sprzedaz-4.jpg" width="1000" height="750" loading="lazy" alt="Salon z kuchnią w wieczornym świetle"></picture>
+            <h3 class="carousel__title">Mieszkanie 8</h3>
+            <p class="carousel__desc">Salon połączony z kuchnią w ciepłym, wieczornym świetle. Wysokie wnętrze z miejscem na antresolę.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- M4. Komórki lokatorskie i parking (tekst z Worda) -->
+    <section class="extras section section--white" aria-label="Komórki lokatorskie i parking">
+      <div class="container extras__grid">
+        <figure class="extras__image reveal">
+          <picture>
+            <source srcset="assets/img/podworze.webp" type="image/webp">
+            <img src="assets/img/podworze.jpg" width="1200" height="800" loading="lazy" alt="Zamknięte podwórze kamienicy z drewnianymi drzwiami">
+          </picture>
+        </figure>
+        <div class="extras__text reveal">
+          <p class="extras__lead">Wybrane lokale posiadają także dostęp do komórek lokatorskich oraz miejsc na prywatnym parkingu wewnątrz posesji.</p>
+          <a class="link-line" href="#kontakt">Zapytaj o szczegóły <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+    <!-- 10. Kontakt: umów oglądanie (formularz-makieta, styl jak Le Provençal: pola z linią) -->
+    <section class="contact section" id="kontakt" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div class="contact__intro reveal">
+          <h2 class="display display--light" id="contact-title">Umów się<br>na oglądanie.</h2>
+          <p class="contact__lead">Część lokali jest już gotowa do zamieszkania, inne właśnie zyskują ostateczny szlif. Oferujemy przestrzenie zarówno na własność, jak i&nbsp;na wynajem.</p>
+
+          <div class="contact__direct">
+            <p class="overline contact__overline">Wolisz porozmawiać od razu?</p>
+            <p class="contact__person">Radosław Litwin</p>
+            <a class="contact__phone" href="tel:+48669903998">+48 669 903 998</a>
+          </div>
+        </div>
+
+        <form class="contact__form js-mock-form reveal" method="post" action="#" novalidate aria-label="Zapytaj o oglądanie">
+          <div class="contact__row">
+            <div class="float float--dark">
+              <input class="float__input" id="cf-name" name="name" type="text" autocomplete="name" placeholder=" " required aria-describedby="cf-name-err">
+              <label class="float__label" for="cf-name">Imię i nazwisko</label>
+              <p class="field__error" id="cf-name-err" hidden>Podaj imię, żebyśmy wiedzieli, jak się zwracać.</p>
+            </div>
+            <div class="float float--dark">
+              <input class="float__input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required aria-describedby="cf-phone-err">
+              <label class="float__label" for="cf-phone">Telefon</label>
+              <p class="field__error" id="cf-phone-err" hidden>Podaj numer — oddzwonimy, by ustalić termin.</p>
+            </div>
+          </div>
+
+          <div class="float float--dark">
+            <input class="float__input" id="cf-email" name="email" type="email" autocomplete="email" placeholder=" ">
+            <label class="float__label" for="cf-email">E-mail <span class="float__optional">(opcjonalnie)</span></label>
+          </div>
+
+          <fieldset class="interest">
+            <legend class="interest__legend">Interesuje mnie</legend>
+            <div class="interest__options">
+              <label class="interest__item"><input type="radio" name="interest" value="zakup" checked><span>Zakup</span></label>
+              <label class="interest__item"><input type="radio" name="interest" value="najem"><span>Najem</span></label>
+              <label class="interest__item"><input type="radio" name="interest" value="nie-wiem"><span>Jeszcze nie wiem</span></label>
+            </div>
+          </fieldset>
+
+          <div class="float float--dark">
+            <textarea class="float__input float__input--area" id="cf-msg" name="message" rows="2" placeholder=" "></textarea>
+            <label class="float__label" for="cf-msg">Wiadomość <span class="float__optional">(opcjonalnie)</span></label>
+          </div>
+
+          <label class="check check--dark">
+            <input class="check__input" type="checkbox" name="consent" required aria-describedby="cf-consent-err">
+            <span class="check__box" aria-hidden="true"></span>
+            <span class="check__text">Wyrażam zgodę na kontakt w sprawie oglądania. Szczegóły w <a href="#">polityce prywatności</a>.</span>
+          </label>
+          <p class="field__error" id="cf-consent-err" hidden>Zaznacz zgodę, abyśmy mogli się z Tobą skontaktować.</p>
+
+          <button class="btn btn--gold contact__submit" type="submit">Umów oglądanie <span class="arrow" aria-hidden="true">↗</span></button>
+          <p class="form-success form-success--dark" role="status" hidden>Dziękujemy! Oddzwonimy, aby ustalić dogodny termin oglądania.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Stopka (wspólna) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__divider" aria-hidden="true">
+        <span></span>
+        <svg viewBox="0 0 28 34" width="28" height="34" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M2 33V14a12 12 0 0 1 24 0v19"/><path d="M8 33V16a6 6 0 0 1 12 0v17"/><path d="M14 10v23"/>
+        </svg>
+        <span></span>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="site-footer__mark" aria-label="Jaracza 21">Jaracza <span>21</span></p>
+          <p class="site-footer__claim">Odrestaurowana kamienica z&nbsp;1893 roku, w&nbsp;której historia spotyka współczesny komfort.</p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Menu w stopce">
+          <p class="overline site-footer__heading">Menu</p>
+          <ul>
+            <li><a href="mieszkania.html">Mieszkania</a></li>
+            <li><a href="#">Historia kamienicy</a></li>
+            <li><a href="#">Okolica</a></li>
+            <li><a href="#">Kronika</a></li>
+            <li><a href="#">Aktualności</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="overline site-footer__heading">Kontakt</p>
+          <ul>
+            <li>ul. Jaracza 21, Łódź</li>
+            <li><a href="tel:+48669903998">+48 669 903 998</a></li>
+            <li><a href="#">e-mail — do uzupełnienia</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Jaracza 21</p>
+        <a href="#">Polityka prywatności</a>
+        <a class="site-footer__top" href="#">Na początek <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

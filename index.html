@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jaracza 21 — odrestaurowana kamienica z 1893 roku w centrum Łodzi</title>
+  <meta name="description" content="Jaracza 21 to neoklasyczna kamienica z 1893 roku w centrum Łodzi. Mieszkania na sprzedaż i na wynajem: wysokie salony, oryginalny detal, rzemieślnicze wykończenie.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <!-- 0. Nagłówek -->
+  <header class="site-header" id="naglowek">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html" aria-label="Jaracza 21 — strona główna">
+        <span class="logo__mark">Jaracza <span class="logo__num">21</span></span>
+        <span class="logo__tagline">Odrestaurowane dziedzictwo z 1893 roku</span>
+      </a>
+      <div class="site-header__actions">
+        <a class="btn btn--outline site-header__cta" href="#kontakt">Zapytaj o mieszkanie <span class="arrow" aria-hidden="true">↗</span></a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-boczne">
+          <span class="menu-toggle__label">Menu</span>
+          <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu boczne -->
+  <div class="drawer" id="menu-boczne" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="drawer__backdrop" data-close></div>
+    <nav class="drawer__panel" aria-label="Główna nawigacja">
+      <button class="drawer__close" type="button" data-close aria-label="Zamknij menu">Zamknij <span aria-hidden="true">✕</span></button>
+      <ul class="drawer__list">
+        <li><a href="index.html" aria-current="page">Strona główna</a></li>
+        <li><a href="mieszkania.html">Mieszkania</a></li>
+        <li><a href="#">Historia kamienicy</a></li>
+        <li><a href="#">Okolica</a></li>
+        <li><a href="#">Kronika</a></li>
+        <li><a href="#">Aktualności</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <div class="drawer__footer">
+        <a class="btn btn--gold" href="#kontakt">Zapytaj o mieszkanie <span class="arrow" aria-hidden="true">↗</span></a>
+        <p class="drawer__contact">
+          <span class="overline">Radosław Litwin</span>
+          <a href="tel:+48669903998">+48 669 903 998</a>
+        </p>
+        <p class="drawer__address">Łódź · ul. Jaracza 21</p>
+      </div>
+    </nav>
+  </div>
+
+  <main id="tresc">
+
+    <!-- 1. Hero -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" autoplay muted loop playsinline preload="metadata"
+               poster="assets/img/hero-poster.jpg"
+               data-src-desktop="assets/video/hero-1920.mp4"
+               data-src-mobile="assets/video/hero-mobile.mp4"
+               data-poster-mobile="assets/img/hero-poster-mobile.jpg"></video>
+        <div class="hero__shade"></div>
+      </div>
+
+      <div class="hero__content container">
+        <div class="hero__main">
+          <h1 class="hero__title" id="hero-title">Dobrze się tu wraca</h1>
+          <p class="hero__subtitle">Odkryj Jaracza 21.</p>
+          <div class="hero__links">
+            <a class="link-line link-line--light" href="mieszkania.html#sprzedaz">Odkryj mieszkania na sprzedaż <span class="arrow" aria-hidden="true">↗</span></a>
+            <a class="link-line link-line--light" href="mieszkania.html#wynajem">Odkryj mieszkania na wynajem <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="hero__aside">
+          <p class="hero__lead">Przywróciliśmy blask neoklasycznej kamienicy, tworząc przestrzeń dla koneserów wielkomiejskiego życia.</p>
+          <p class="hero__extra">Odnowiliśmy XIX-wieczne detale architektoniczne, wpisując w&nbsp;zabytkową tkankę nowoczesną infrastrukturę.</p>
+          <p class="hero__extra">W odnowionych wnętrzach czekają na Ciebie przestronne, wysokie salony pełne naturalnego światła, oryginalny detal oraz rzemieślnicza precyzja wykończenia. To przestrzeń stworzona dla koneserów miejskiego życia.</p>
+        </div>
+      </div>
+
+      <div class="hero__bottom container">
+        <a class="scroll-cue" href="#od-1893">
+          <span class="scroll-cue__line" aria-hidden="true"></span>
+          <span>Przewiń</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. Od 1893 roku w Łodzi -->
+    <section class="intro section section--white" id="od-1893" aria-labelledby="intro-title">
+      <div class="container intro__grid">
+        <div class="intro__label reveal">
+          <h2 class="overline" id="intro-title">Od 1893 roku w Łodzi</h2>
+          <span class="monogram" aria-hidden="true">J<span>21</span></span>
+        </div>
+
+        <div class="intro__text reveal">
+          <p class="lead">Posesja przy dawnej ulicy Cegielnianej powstała w&nbsp;okresie najszybszego wzrostu miasta. Skala budynku, wysokość pomieszczeń sięgająca ponad trzech metrów i&nbsp;rytm geometrycznych okien to zapis tego, jak solidnie budowano tu przestrzeń do życia i&nbsp;pracy.</p>
+          <p>Rewitalizację prowadziliśmy z&nbsp;szacunkiem do historii tego miejsca. To, co przez lata budowało jego charakter, pozostaje częścią Jaracza 21 także dzisiaj.</p>
+          <a class="link-line" href="#">Poznaj historię kamienicy <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+
+        <figure class="intro__image reveal">
+          <picture>
+            <source srcset="assets/img/fasada-dzien.webp" type="image/webp">
+            <img src="assets/img/fasada-dzien.jpg" width="1200" height="1200" loading="lazy"
+                 alt="Odnowiona fasada kamienicy Jaracza 21 z łukowym wejściem i numerem 21">
+          </picture>
+        </figure>
+      </div>
+    </section>
+
+    <!-- 3. Przerywnik: odrestaurowane detale -->
+    <figure class="photo-band">
+      <div class="photo-band__media" data-parallax>
+        <picture>
+          <source srcset="assets/img/balustrada.webp" type="image/webp">
+          <img src="assets/img/balustrada.jpg" width="2400" height="1387" loading="lazy"
+               alt="Odrestaurowana żeliwna balustrada i dębowe stopnie klatki schodowej">
+        </picture>
+      </div>
+      <figcaption class="photo-band__caption container overline">Odrestaurowane detale</figcaption>
+    </figure>
+
+    <!-- 4. Czas mija. Charakter zostaje. -->
+    <section class="character section section--ivory" aria-labelledby="character-title">
+      <div class="container character__grid">
+        <div class="character__label reveal">
+          <h2 class="overline" id="character-title">Czas mija. Charakter zostaje.</h2>
+          <span class="monogram" aria-hidden="true">J<span>21</span></span>
+        </div>
+
+        <ul class="features reveal">
+          <li class="feature">
+            <h3 class="feature__title">Oryginalne detale</h3>
+            <p class="feature__text">Dębowe stopnie, odrestaurowane drewniane poręcze, żelazne balustrady.</p>
+          </li>
+          <li class="feature">
+            <h3 class="feature__title">Współczesna inżynieria</h3>
+            <p class="feature__text">Cichobieżna, 5-osobowa winda wpisana w&nbsp;zabytkową strukturę klatki schodowej.</p>
+          </li>
+          <li class="feature">
+            <h3 class="feature__title">Standard wykończenia</h3>
+            <p class="feature__text">Trwałe, szlachetne materiały w&nbsp;mieszkaniach oraz precyzyjnie wykończone korytarze i&nbsp;części wspólne.</p>
+          </li>
+          <li class="feature">
+            <h3 class="feature__title">Prywatność i wygoda</h3>
+            <p class="feature__text">Dla wybranych lokali dostępne są również prywatne miejsca parkingowe oraz komórki lokatorskie na terenie posesji.</p>
+          </li>
+        </ul>
+
+        <div class="character__images reveal">
+          <picture>
+            <source srcset="assets/img/klatka-schodowa.webp" type="image/webp">
+            <img src="assets/img/klatka-schodowa.jpg" width="1200" height="800" loading="lazy"
+                 alt="Klatka schodowa z żeliwnymi balustradami i dębowymi stopniami">
+          </picture>
+          <picture>
+            <source srcset="assets/img/korytarz-drzwi.webp" type="image/webp">
+            <img src="assets/img/korytarz-drzwi.jpg" width="1200" height="800" loading="lazy"
+                 alt="Korytarz z drewnianymi drzwiami do mieszkań 18 i 19 oraz mozaiką na posadzce">
+          </picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Przerywnik: światło we wnętrzach -->
+    <figure class="photo-band">
+      <div class="photo-band__media" data-parallax>
+        <picture>
+          <source srcset="assets/img/wnetrze-salon-okno.webp" type="image/webp">
+          <img src="assets/img/wnetrze-salon-okno.jpg" width="2400" height="1350" loading="lazy"
+               alt="Wysoki salon z oknem, zieloną sofą i lustrem w wykończonym mieszkaniu">
+        </picture>
+      </div>
+      <figcaption class="photo-band__caption container overline">Światło we wnętrzach</figcaption>
+    </figure>
+
+    <!-- 6. Światło. Detal. Przestrzeń. -->
+    <section class="interiors section section--white" aria-labelledby="interiors-title">
+      <div class="container">
+        <div class="interiors__grid">
+          <div class="interiors__intro reveal">
+            <h2 class="display" id="interiors-title">Światło. Detal.<br>Przestrzeń.</h2>
+            <p class="interiors__text">W zależności od potrzeb oferujemy lokale przeznaczone na własność lub na wynajem. Dostępne są unikatowe mieszkania w&nbsp;pełni wykończone, mieszkania w&nbsp;stanie deweloperskim oraz mieszkania do remontu.</p>
+            <a class="link-line" href="mieszkania.html">Odkryj mieszkania <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+
+          <div class="interiors__gallery reveal">
+            <figure class="interiors__item interiors__item--wide">
+              <picture>
+                <source srcset="assets/img/wnetrze-kuchnia.webp" type="image/webp">
+                <img src="assets/img/wnetrze-kuchnia.jpg" width="1600" height="900" loading="lazy"
+                     alt="Salon z kuchnią i drewnianą wyspą w kolorze szałwii">
+              </picture>
+            </figure>
+            <figure class="interiors__item">
+              <picture>
+                <source srcset="assets/img/wnetrze-antresola.webp" type="image/webp">
+                <img src="assets/img/wnetrze-antresola.jpg" width="1000" height="750" loading="lazy"
+                     alt="Sofa w salonie, w tle zabudowa z drabiną na antresolę">
+              </picture>
+            </figure>
+            <figure class="interiors__item interiors__item--tall">
+              <picture>
+                <source srcset="assets/img/wnetrze-przedpokoj.webp" type="image/webp">
+                <img src="assets/img/wnetrze-przedpokoj.jpg" width="800" height="1000" loading="lazy"
+                     alt="Przedpokój z kinkietami i wazonem na stoliku">
+              </picture>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. Łódź za drzwiami -->
+    <section class="city section section--ivory" aria-labelledby="city-title">
+      <div class="container city__grid">
+        <div class="city__head reveal">
+          <h2 class="display" id="city-title">Dobrze tu wracać.<br>Dobrze stąd wyruszać.</h2>
+        </div>
+
+        <div class="city__photos reveal">
+          <figure class="city__arch">
+            <picture>
+              <source srcset="assets/img/brama.webp" type="image/webp">
+              <img src="assets/img/brama.jpg" width="900" height="1126" loading="lazy"
+                   alt="Widok z bramy kamienicy przez łukowe naświetle na ulicę Jaracza">
+            </picture>
+            <figcaption class="overline city__caption">Przez bramę, w stronę miasta</figcaption>
+          </figure>
+          <figure class="city__square">
+            <picture>
+              <source srcset="assets/img/lodz-ulica.webp" type="image/webp">
+              <img src="assets/img/lodz-ulica.jpg" width="800" height="800" loading="lazy"
+                   alt="Deptak w centrum Łodzi z kamienicami i latarniami">
+            </picture>
+          </figure>
+        </div>
+
+        <div class="city__text reveal">
+          <p>Jaracza 21 to adres dla tych, którzy chcą czerpać z&nbsp;miasta to, co najlepsze, nie rezygnując z&nbsp;prywatności.</p>
+          <p>To wielkomiejskie centrum, w&nbsp;którym czas mierzy się krokami, a&nbsp;większość codziennych spraw da się załatwić pieszo.</p>
+          <a class="link-line" href="#">Poznaj okolicę <span class="arrow" aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Kronika (zdjęcia tymczasowe z sesji b&w — do podmiany na fotorelację z kulis) -->
+    <section class="chronicle section section--white" aria-labelledby="chronicle-title">
+      <div class="container">
+        <div class="chronicle__head reveal">
+          <div>
+            <h2 class="display" id="chronicle-title">Serce włożone<br>w to miejsce.</h2>
+          </div>
+          <div class="chronicle__text">
+            <p>Fotorelacja z kulis rewitalizacji, od pierwszych prac po dzisiejszy dzień. Ludzie, pył i&nbsp;detale, z&nbsp;których powstało Jaracza 21.</p>
+            <a class="link-line" href="#">Zobacz kronikę <span class="arrow" aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+
+        <ul class="chronicle__strip reveal">
+          <li><picture><source srcset="assets/img/kronika-1.webp" type="image/webp"><img src="assets/img/kronika-1.jpg" width="700" height="933" loading="lazy" alt="Przejazd bramny na podwórze kamienicy"></picture></li>
+          <li><picture><source srcset="assets/img/kronika-2.webp" type="image/webp"><img src="assets/img/kronika-2.jpg" width="700" height="933" loading="lazy" alt="Ceglany narożnik i odnowione podwórze"></picture></li>
+          <li><picture><source srcset="assets/img/kronika-3.webp" type="image/webp"><img src="assets/img/kronika-3.jpg" width="700" height="933" loading="lazy" alt="Klatka schodowa z żeliwną balustradą"></picture></li>
+          <li><picture><source srcset="assets/img/kronika-4.webp" type="image/webp"><img src="assets/img/kronika-4.jpg" width="700" height="933" loading="lazy" alt="Otwarta brama z łukowym naświetlem"></picture></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 9. Newsletter (makieta — bez wysyłki) -->
+    <section class="newsletter section section--ivory" aria-labelledby="newsletter-title">
+      <div class="container newsletter__grid reveal">
+        <div class="newsletter__intro">
+          <h2 class="newsletter__title" id="newsletter-title">Wydarzenia i nowości z&nbsp;Jaracza&nbsp;21</h2>
+          <p class="newsletter__text">Nowe mieszkania, wydarzenia w kamienicy i wpisy z kroniki. Piszemy tylko wtedy, gdy mamy coś wartego uwagi.</p>
+        </div>
+        <form class="newsletter__form js-mock-form" method="post" action="#" novalidate>
+          <div class="float newsletter__email">
+            <input class="float__input" id="nl-email" name="email" type="email" autocomplete="email" placeholder=" " required aria-describedby="nl-email-err">
+            <label class="float__label" for="nl-email">Twój adres e-mail</label>
+            <p class="field__error" id="nl-email-err" hidden>Wpisz poprawny adres e-mail.</p>
+          </div>
+          <label class="check newsletter__consent">
+            <input class="check__input" type="checkbox" name="consent" required aria-describedby="nl-consent-err">
+            <span class="check__box" aria-hidden="true"></span>
+            <span class="check__text">Akceptuję <a href="#">politykę prywatności</a> i chcę otrzymywać newsletter Jaracza 21. Mogę wypisać się w każdej chwili.</span>
+          </label>
+          <p class="field__error newsletter__consent-err" id="nl-consent-err" hidden>Zaznacz zgodę, aby się zapisać.</p>
+          <button class="btn btn--dark newsletter__btn" type="submit">Zapisz się <span class="arrow" aria-hidden="true">↗</span></button>
+          <p class="form-success newsletter__ok" role="status" hidden>Dziękujemy! Sprawdź skrzynkę i potwierdź zapis.</p>
+        </form>
+        <div class="newsletter__photos" aria-hidden="true">
+          <picture><source srcset="assets/img/newsletter-drzwi.webp" type="image/webp"><img src="assets/img/newsletter-drzwi.jpg" width="700" height="875" loading="lazy" alt=""></picture>
+          <picture><source srcset="assets/img/newsletter-fontanna.webp" type="image/webp"><img src="assets/img/newsletter-fontanna.jpg" width="700" height="875" loading="lazy" alt=""></picture>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. Kontakt: umów oglądanie (formularz-makieta, styl jak Le Provençal: pola z linią) -->
+    <section class="contact section" id="kontakt" aria-labelledby="contact-title">
+      <div class="container contact__grid">
+        <div class="contact__intro reveal">
+          <h2 class="display display--light" id="contact-title">Umów się<br>na oglądanie.</h2>
+          <p class="contact__lead">Część lokali jest już gotowa do zamieszkania, inne właśnie zyskują ostateczny szlif. Oferujemy przestrzenie zarówno na własność, jak i&nbsp;na wynajem.</p>
+
+          <div class="contact__direct">
+            <p class="overline contact__overline">Wolisz porozmawiać od razu?</p>
+            <p class="contact__person">Radosław Litwin</p>
+            <a class="contact__phone" href="tel:+48669903998">+48 669 903 998</a>
+          </div>
+        </div>
+
+        <form class="contact__form js-mock-form reveal" method="post" action="#" novalidate aria-label="Zapytaj o oglądanie">
+          <div class="contact__row">
+            <div class="float float--dark">
+              <input class="float__input" id="cf-name" name="name" type="text" autocomplete="name" placeholder=" " required aria-describedby="cf-name-err">
+              <label class="float__label" for="cf-name">Imię i nazwisko</label>
+              <p class="field__error" id="cf-name-err" hidden>Podaj imię, żebyśmy wiedzieli, jak się zwracać.</p>
+            </div>
+            <div class="float float--dark">
+              <input class="float__input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required aria-describedby="cf-phone-err">
+              <label class="float__label" for="cf-phone">Telefon</label>
+              <p class="field__error" id="cf-phone-err" hidden>Podaj numer — oddzwonimy, by ustalić termin.</p>
+            </div>
+          </div>
+
+          <div class="float float--dark">
+            <input class="float__input" id="cf-email" name="email" type="email" autocomplete="email" placeholder=" ">
+            <label class="float__label" for="cf-email">E-mail <span class="float__optional">(opcjonalnie)</span></label>
+          </div>
+
+          <fieldset class="interest">
+            <legend class="interest__legend">Interesuje mnie</legend>
+            <div class="interest__options">
+              <label class="interest__item"><input type="radio" name="interest" value="zakup" checked><span>Zakup</span></label>
+              <label class="interest__item"><input type="radio" name="interest" value="najem"><span>Najem</span></label>
+              <label class="interest__item"><input type="radio" name="interest" value="nie-wiem"><span>Jeszcze nie wiem</span></label>
+            </div>
+          </fieldset>
+
+          <div class="float float--dark">
+            <textarea class="float__input float__input--area" id="cf-msg" name="message" rows="2" placeholder=" "></textarea>
+            <label class="float__label" for="cf-msg">Wiadomość <span class="float__optional">(opcjonalnie)</span></label>
+          </div>
+
+          <label class="check check--dark">
+            <input class="check__input" type="checkbox" name="consent" required aria-describedby="cf-consent-err">
+            <span class="check__box" aria-hidden="true"></span>
+            <span class="check__text">Wyrażam zgodę na kontakt w sprawie oglądania. Szczegóły w <a href="#">polityce prywatności</a>.</span>
+          </label>
+          <p class="field__error" id="cf-consent-err" hidden>Zaznacz zgodę, abyśmy mogli się z Tobą skontaktować.</p>
+
+          <button class="btn btn--gold contact__submit" type="submit">Umów oglądanie <span class="arrow" aria-hidden="true">↗</span></button>
+          <p class="form-success form-success--dark" role="status" hidden>Dziękujemy! Oddzwonimy, aby ustalić dogodny termin oglądania.</p>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 11. Stopka -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__divider" aria-hidden="true">
+        <span></span>
+        <svg viewBox="0 0 28 34" width="28" height="34" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M2 33V14a12 12 0 0 1 24 0v19"/><path d="M8 33V16a6 6 0 0 1 12 0v17"/><path d="M14 10v23"/>
+        </svg>
+        <span></span>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="site-footer__mark" aria-label="Jaracza 21">Jaracza <span>21</span></p>
+          <p class="site-footer__claim">Odrestaurowana kamienica z&nbsp;1893 roku, w&nbsp;której historia spotyka współczesny komfort.</p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Menu w stopce">
+          <p class="overline site-footer__heading">Menu</p>
+          <ul>
+            <li><a href="mieszkania.html">Mieszkania</a></li>
+            <li><a href="#">Historia kamienicy</a></li>
+            <li><a href="#">Okolica</a></li>
+            <li><a href="#">Kronika</a></li>
+            <li><a href="#">Aktualności</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="overline site-footer__heading">Kontakt</p>
+          <ul>
+            <li>ul. Jaracza 21, Łódź</li>
+            <li><a href="tel:+48669903998">+48 669 903 998</a></li>
+            <li><a href="#">e-mail — do uzupełnienia</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Jaracza 21</p>
+        <a href="#">Polityka prywatności</a>
+        <a class="site-footer__top" href="#">Na początek <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

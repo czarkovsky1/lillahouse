@@ -91,9 +91,14 @@ h1, h2, h3, p { margin: 0; }
   font-size: .95em;
 }
 
-/* Przycisk — jeden rozmiar w całym serwisie.
-   Hover: wyłącznie zmiana koloru na mosiężny, bez animacji i przejść. */
+/* Przycisk CTA — jeden wygląd w całym serwisie (decyzja projektanta 2026-10-17):
+   spoczynek: złote wypełnienie, ciemny tekst;
+   hover: przycisk robi się przezroczysty (widać tło sekcji), tekst i ramka złote,
+   a wewnętrzna ramka „wjeżdża” od krawędzi na 4 px do środka (jak na livechloe.com).
+   Kolor złota po najechaniu zależy od tła: --btn-hover (ciemny złoty na jasnym tle, jasny złoty na ciemnym). */
 .btn {
+  --btn-hover: var(--gold-text);
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -105,24 +110,30 @@ h1, h2, h3, p { margin: 0; }
   font-weight: 500;
   letter-spacing: .04em;
   text-decoration: none;
-  border: 1px solid currentColor;
+  color: var(--ink);
+  background-color: var(--gold-light);
+  border: 1px solid var(--gold-light);
+  transition: background-color .4s var(--ease), color .4s var(--ease), border-color .4s var(--ease);
 }
-/* Podwójna ramka jak w Le Provençal: druga, szersza i niższa ramka przecina główną (statyczna) */
-.btn { position: relative; }
 .btn::before {
   content: "";
   position: absolute;
-  inset: 6px -7px;
-  border: 1px solid currentColor;
-  opacity: .75;
+  inset: 0;
+  border: 1px solid transparent;
+  opacity: 0;
   pointer-events: none;
+  transition: inset .6s cubic-bezier(0, -.06, 0, .98), opacity .6s cubic-bezier(0, -.06, 0, .98), border-color .4s var(--ease);
 }
-.btn--outline { color: var(--white); }
-.btn--outline:hover { color: var(--gold-light); }
-.btn--gold { background: var(--gold-light); border-color: var(--gold-light); color: var(--ink); }
-.btn--gold::before { border-color: var(--gold-light); }
-.btn--gold:hover { background: var(--brass-hover); border-color: var(--brass-hover); }
-.btn--gold:hover::before { border-color: var(--brass-hover); }
+.btn:hover,
+.btn:focus-visible { background-color: transparent; color: var(--btn-hover); border-color: var(--btn-hover); }
+.btn:hover::before,
+.btn:focus-visible::before { inset: 4px; opacity: 1; border-color: var(--btn-hover); }
+/* Strzałka ↗ o pół piksela grubsza */
+.btn .arrow { -webkit-text-stroke: .5px currentColor; }
+/* Na ciemnym tle (hero pod przezroczystym nagłówkiem, menu boczne, kontakt) — jaśniejsze złoto po najechaniu */
+.site-header:not(.is-solid) .btn,
+.drawer .btn,
+.contact .btn { --btn-hover: var(--gold-light); }
 
 /* Link z linią (CTA drugorzędne z PDF) */
 .link-line {
@@ -176,6 +187,22 @@ h1, h2, h3, p { margin: 0; }
 .reveal:nth-child(2) { transition-delay: .12s; }
 .reveal:nth-child(3) { transition-delay: .24s; }
 
+/* Wipe up / clip-path reveal: zdjęcie stoi w miejscu, maska rośnie od dołu do góry.
+   Maska na <picture> (obserwowany jest <figure>, który nie jest przycinany). */
+.wipe-up > picture { display: block; clip-path: inset(120% -12% -20% -12%); transition: clip-path 1.3s cubic-bezier(.77, 0, .18, 1); }   /* ujemne marginesy maski zostawiają miejsce na cień zdjęcia */
+.wipe-up.is-visible > picture { clip-path: inset(-12% -12% -20% -12%); }
+
+/* Zdjęcia „wjeżdżają” od dołu: okno odsłania się od dołu, zdjęcie przesuwa się w górę.
+   Przycięcie jest na <picture>, nie na obserwowanym elemencie — Chrome liczy clip-path
+   do IntersectionObserver i w pełni przycięty element nigdy nie byłby „widoczny”. */
+.rise > picture { clip-path: inset(100% 0 0 0); transition: clip-path 1.1s var(--ease); }
+.rise img { transform: translateY(18%); transition: transform 1.4s var(--ease); }
+.rise.is-visible > picture { clip-path: inset(0 0 0 0); }
+.rise.is-visible img { transform: none; }
+.rise:nth-child(2) > picture, .rise:nth-child(2) img { transition-delay: .18s; }
+.rise:nth-child(3) > picture, .rise:nth-child(3) img { transition-delay: .36s; }
+.rise:nth-child(4) > picture, .rise:nth-child(4) img { transition-delay: .54s; }
+
 /* ---------- 0. Nagłówek ---------- */
 
 .site-header {
@@ -194,19 +221,18 @@ h1, h2, h3, p { margin: 0; }
   transition: min-height .4s var(--ease);
 }
 
-.logo { display: flex; flex-direction: column; gap: 6px; text-decoration: none; }
-.logo__mark {
-  font-family: var(--font-serif);
-  font-size: 26px;
-  line-height: 1;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  font-variation-settings: "opsz" 48;
-}
-.logo__num { font-size: .72em; letter-spacing: .02em; }
+/* Logotyp klienta (okno + JARACZA 21): jasna wersja na hero, ciemna na białym nagłówku */
+.logo { display: flex; align-items: center; gap: 20px; text-decoration: none; }
+.logo__mark { display: block; height: 72px; transition: height .4s var(--ease); }
+.logo__img { display: block; height: 100%; width: auto; }
+.logo__img--dark { display: none; }
 .logo__tagline {
+  max-width: 190px;
+  padding-left: 20px;
+  border-left: 1px solid currentColor;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1.4;
   letter-spacing: .04em;
   opacity: .9;
 }
@@ -216,7 +242,8 @@ h1, h2, h3, p { margin: 0; }
 .menu-toggle {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  justify-content: flex-end;   /* sam hamburger, obszar kliknięcia 46×46 */
+  min-width: 46px;
   min-height: 46px;
   padding: 0;
   background: none;
@@ -238,9 +265,10 @@ h1, h2, h3, p { margin: 0; }
   box-shadow: 0 6px 24px -10px rgba(21, 33, 27, .18);   /* delikatny cień zamiast linii */
 }
 .site-header.is-solid .site-header__inner { min-height: 80px; }
-.site-header.is-solid .btn--outline { color: var(--ink); }
-.site-header.is-solid .btn--outline:hover { color: var(--gold-text); }
 .site-header.is-solid .logo__tagline { color: var(--gold-text); opacity: 1; }
+.site-header.is-solid .logo__mark { height: 56px; }
+.site-header.is-solid .logo__img--light { display: none; }
+.site-header.is-solid .logo__img--dark { display: block; }
 
 /* ---------- Menu boczne ---------- */
 
@@ -298,7 +326,7 @@ h1, h2, h3, p { margin: 0; }
   transition: color .3s var(--ease), padding-left .3s var(--ease);
 }
 .drawer__list a:hover,
-.drawer__list a[aria-current="page"] { color: var(--gold-light); }
+.drawer__list a[aria-current] { color: var(--gold-light); }
 
 
 .drawer__footer { margin-top: auto; padding-top: 40px; display: grid; gap: 24px; }
@@ -344,7 +372,7 @@ h1, h2, h3, p { margin: 0; }
   position: relative;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-  align-items: end;
+  align-items: start;   /* obie kolumny od góry (prośba klienta) */
   gap: 48px;
   padding-bottom: 40px;
 }
@@ -367,6 +395,7 @@ h1, h2, h3, p { margin: 0; }
 .hero__links { display: flex; flex-wrap: wrap; gap: 16px 24px; margin-top: 40px; }
 .hero__links .link-line { min-width: 280px; }
 .hero__aside {
+  padding-top: 10px;   /* optyczne wyrównanie z górą liter nagłówka */
   justify-self: end;
   display: grid;
   gap: 14px;
@@ -430,21 +459,21 @@ h1, h2, h3, p { margin: 0; }
   display: grid;
   grid-template-columns: minmax(0, 2.4fr) minmax(0, 5fr) minmax(0, 4fr);
   gap: 48px;
-  align-items: start;
+  align-items: stretch;   /* link „Poznaj historię” schodzi do dolnej krawędzi zdjęcia */
 }
 /* Tekst bliżej lewej, z wyraźnym oddechem przed zdjęciem (jak w PDF) */
 .intro__text { padding-right: clamp(24px, 6vw, 112px); }
 .intro__text .link-line { justify-self: start; }
-.intro__label { display: grid; gap: 14px; justify-items: start; }
+.intro__label { display: grid; gap: 14px; justify-items: start; align-self: start; }
 .intro__label .overline { color: var(--gold-text); }
-.intro__text { display: grid; gap: 24px; max-width: 600px; }
+.intro__text { display: flex; flex-direction: column; gap: 24px; max-width: 600px; }
 .intro__text > p:not(.lead) { max-width: 470px; color: var(--muted); font-size: 16px; }
-.intro__text .link-line { margin-top: 8px; }
-.intro__image { margin: 0; }
+.intro__text .link-line { margin-top: auto; align-self: flex-start; }
+.intro__image { margin: 0; align-self: start; justify-self: end; width: 100%; max-width: 360px; }   /* mniejsze, przeskalowane w całości */
 .intro__image img {
   width: 100%;
   height: auto;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 4 / 5;   /* pionowe zdjęcie fasady z fontanną (prośba klienta) */
   object-fit: cover;
   box-shadow: 0 30px 60px -30px rgba(21, 33, 27, .35);
 }
@@ -454,12 +483,13 @@ h1, h2, h3, p { margin: 0; }
 .photo-band {
   position: relative;
   margin: 0;
-  height: clamp(420px, 72vh, 780px);
+  height: clamp(336px, 58vh, 624px);   /* o ~20% niżej — paralaksa mocniej widoczna */
   overflow: hidden;
   background: var(--ink);
   color: var(--white);
 }
-.photo-band__media { position: absolute; inset: -12% 0; will-change: transform; }
+/* Zapas 22% u góry i u dołu — paralaksa przesuwa zdjęcie wyraźnie, bez odsłaniania krawędzi */
+.photo-band__media { position: absolute; inset: -22% 0; will-change: transform; }
 .photo-band__media img { width: 100%; height: 100%; object-fit: cover; }
 .photo-band::after {
   content: "";
@@ -475,23 +505,54 @@ h1, h2, h3, p { margin: 0; }
   z-index: 1;
 }
 
+/* ---------- Ruchoma galeria (Kronika; ciągły przesuw, bez klikania i swipe) ---------- */
+
+/* Galeria w sekcji Kronika: pełna szerokość pod nagłówkiem */
+.details { margin-top: clamp(48px, 6vw, 88px); overflow: hidden; }
+.details__viewport { overflow: hidden; }
+.details__track {
+  display: flex;
+  width: max-content;
+  animation: details-marquee var(--marquee-duration, 70s) linear infinite;
+  will-change: transform;
+}
+.details__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 clamp(12px, 1.4vw, 20px) 0 0;
+  display: flex;
+  gap: clamp(12px, 1.4vw, 20px);
+}
+.details__list img {
+  display: block;
+  height: clamp(260px, 30vw, 440px);
+  width: auto;
+  max-width: none;
+}
+@keyframes details-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
 /* ---------- 4. Czas mija. Charakter zostaje. ---------- */
 
 .character__grid {
   display: grid;
   grid-template-columns: minmax(0, 2.4fr) minmax(0, 5fr) minmax(0, 4fr);
   gap: 48px;
-  align-items: start;
+  align-items: stretch;   /* cechy i zdjęcia na wspólną wysokość */
 }
-.character__label { display: grid; gap: 14px; justify-items: start; }
+.character__label { display: grid; gap: 14px; justify-items: start; align-self: start; }
 .character__label .overline { color: var(--gold-text); }
 
 .features {
+  display: flex;
+  flex-direction: column;
   list-style: none;
   margin: 0 clamp(24px, 6vw, 112px) 0 0;
   padding: 0;
 }
-.feature { padding: 22px 0 24px; border-bottom: 1px solid var(--line); }
+.feature { flex: 1 1 auto; padding: 14px 0 16px; border-bottom: 1px solid var(--line); }   /* naturalnie zwarte; nadmiar wysokości rozkłada flex */
 .feature:first-child { padding-top: 0; }   /* bez górnej kreski — pierwsza cecha startuje na wysokości nadtytułu */
 .feature__title {
   font-family: var(--font-serif);
@@ -508,8 +569,11 @@ h1, h2, h3, p { margin: 0; }
   color: var(--muted);
 }
 
-.character__images { display: grid; gap: 20px; }
-.character__images img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.character__images { display: grid; grid-template-rows: 1fr 1fr; gap: 20px; }
+/* Zdjęcia niższe niż 3:2; obie kolumny rozciągają się do wspólnej wysokości,
+   więc ostatnia linia pod cechami wypada równo z dolną krawędzią zdjęć */
+.character__images picture { position: relative; display: block; min-height: clamp(200px, 17vw, 270px); }
+.character__images img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- 6. Światło. Detal. Przestrzeń. ---------- */
 
@@ -534,21 +598,23 @@ h1, h2, h3, p { margin: 0; }
 .interiors__overline { color: var(--gold-text); }
 .interiors__text { margin-top: 12px; color: var(--muted); }
 
-/* Asymetryczna galeria jak w PDF: szerokie zdjęcie u góry, dwa niżej — prawe obniżone */
+/* Równa siatka jak w przykładzie klienta: wysokie zdjęcie z lewej (2 rzędy),
+   szerokie u góry z prawej, dwa małe pod nim */
 .interiors__gallery {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 24px;
-  align-items: start;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 12px;
+  aspect-ratio: 4 / 3;
   margin-top: clamp(16px, 2.5vw, 40px);
 }
-.interiors__item { margin: 0; overflow: hidden; }
+.interiors__item { margin: 0; overflow: hidden; min-height: 0; }
 .interiors__item picture { display: block; height: 100%; }
 .interiors__item img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease); }
 .interiors__item:hover img { transform: scale(1.03); }
-.interiors__item--wide { grid-column: 1 / -1; aspect-ratio: 2 / 1; }
-.interiors__item:not(.interiors__item--wide):not(.interiors__item--tall) { aspect-ratio: 3 / 2; margin-top: 40px; }
-.interiors__item--tall { aspect-ratio: 1 / 1; }
+.interiors__item--tall { grid-column: 1; grid-row: 1 / 3; }
+.interiors__item--wide { grid-column: 2 / 4; grid-row: 1; }
+.interiors__item--small { grid-row: 2; }
 
 .interiors__intro .link-line { justify-self: start; margin-top: 12px; }
 
@@ -570,25 +636,16 @@ h1, h2, h3, p { margin: 0; }
 .city__head .display { font-size: clamp(40px, 3.9vw, 62px); }
 .city__overline { color: var(--gold-text); }
 
-/* Łuk + kwadratowe zdjęcie miasta, obniżone względem łuku */
+/* Dwa zdjęcia obok siebie, tej samej wielkości i wysokości (prośba klienta, bez łuku) */
 .city__photos {
   grid-area: photos;
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-  gap: clamp(20px, 2.5vw, 36px);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(12px, 1.4vw, 20px);
   align-items: start;
 }
-.city__square { margin: 120px 0 0; }
-.city__square img { width: 100%; height: auto; aspect-ratio: 1 / 1; object-fit: cover; }
-
-.city__arch { margin: 0; }
-.city__arch img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 999px 999px 0 0;   /* łuk jak brama kamienicy */
-}
+.city__photo { margin: 0; }
+.city__photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; }
 .city__caption { margin-top: 14px; color: var(--muted); }
 /* Podpisy zdjęć to nie ponadnagłówki — zostają w wadze 500 */
 .photo-band__caption,
@@ -603,6 +660,10 @@ h1, h2, h3, p { margin: 0; }
 }
 .city__text .link-line { justify-self: start; margin-top: 12px; }
 
+/* Mapa na całą szerokość — osobny pas przed sekcją kontaktową */
+.map { height: clamp(380px, 42vw, 560px); background: var(--line); }
+.map iframe { display: block; width: 100%; height: 100%; border: 0; }
+
 /* ---------- 8. Kronika ---------- */
 
 .chronicle__head {
@@ -612,21 +673,8 @@ h1, h2, h3, p { margin: 0; }
   align-items: end;
 }
 .chronicle__overline { color: var(--gold-text); margin-bottom: 20px; }
-.chronicle__text { display: grid; gap: 24px; max-width: 420px; color: var(--muted); }
+.chronicle__text { display: grid; gap: 24px; max-width: 420px; justify-self: end; color: var(--muted); }   /* prawa krawędź = prawa krawędź ostatniego zdjęcia */
 .chronicle__text .link-line { justify-self: start; }
-
-/* Pas reportażowych zdjęć — co drugie obniżone, jak kadry z taśmy */
-.chronicle__strip {
-  list-style: none;
-  margin: clamp(48px, 6vw, 88px) 0 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 20px;
-  align-items: start;
-}
-.chronicle__strip li:nth-child(even) { margin-top: 56px; }
-.chronicle__strip img { width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; }
 
 /* ---------- Formularze (makiety) ---------- */
 
@@ -727,10 +775,6 @@ h1, h2, h3, p { margin: 0; }
 }
 .form-success--dark { color: var(--white); background: rgba(255, 255, 255, .06); border-left-color: var(--gold-light); }
 
-.btn--dark { background: var(--ink); border-color: var(--ink); color: var(--white); }
-.btn--dark::before { border-color: var(--ink); }
-.btn--dark:hover { background: var(--gold-light); border-color: var(--gold-light); color: var(--ink); }
-.btn--dark:hover::before { border-color: var(--gold-light); }
 
 /* ---------- 9. Newsletter ---------- */
 
@@ -859,16 +903,8 @@ h1, h2, h3, p { margin: 0; }
   gap: 48px;
   padding: clamp(56px, 6vw, 88px) 0 clamp(48px, 5vw, 72px);
 }
-.site-footer__mark {
-  font-family: var(--font-serif);
-  font-size: clamp(56px, 7vw, 112px);
-  line-height: .9;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  font-variation-settings: "opsz" 72;
-}
-.site-footer__mark span { font-size: .32em; letter-spacing: 0; }
+.site-footer__mark { margin: 0; }
+.site-footer__mark img { display: block; height: clamp(120px, 11vw, 170px); width: auto; }
 .site-footer__claim {
   margin-top: 28px;
   max-width: 420px;
@@ -1014,6 +1050,176 @@ h1, h2, h3, p { margin: 0; }
   color: var(--ink);
 }
 .carousel__desc { margin-top: 8px; max-width: 460px; color: var(--muted); }
+
+/* ==========================================================
+   PODSTRONA: AKTUALNOŚCI (listing + szablon wpisu)
+   Hero, newsletter, kontakt i stopka jak na pozostałych stronach.
+   ========================================================== */
+
+/* A1. Hero listingu: tytuł + jedno zdanie szeryfem + link do newslettera */
+.hero__lead--page { margin: 20px 0 0; max-width: 520px; }
+
+/* W1. Hero wpisu: powrót do listy nad tytułem, pod tytułem kategoria, data, czas czytania */
+.hero--post .hero__title--page { max-width: 860px; }
+.post-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  color: rgba(255, 255, 255, .9);
+  text-decoration: none;
+}
+.post-back:hover { color: var(--gold-light); }
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 28px;
+  margin-top: 28px;
+  font-size: 14px;
+  letter-spacing: .02em;
+  color: rgba(255, 255, 255, .88);
+}
+.post-meta__cat { font-weight: 700; letter-spacing: .04em; color: var(--gold-light); }
+
+/* A2. Lista wpisów: wpisy jeden pod drugim (zdjęcie 7/12 + tekst 5/12), oddzielone cienką linią */
+.news-list { list-style: none; margin: 0; padding: 0; }
+.news-list > li + li {
+  margin-top: clamp(56px, 6vw, 96px);
+  padding-top: clamp(56px, 6vw, 96px);
+  border-top: 1px solid var(--line);
+}
+
+.news-card {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  column-gap: clamp(40px, 6vw, 104px);
+  align-items: center;
+}
+.news-card__media { display: block; overflow: hidden; }
+.news-card__media img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease);
+}
+.news-card:hover .news-card__media img { transform: scale(1.03); }
+.news-card__body { display: grid; gap: 14px; justify-items: start; }
+.news-card__meta { font-size: 14px; color: var(--muted); }
+.news-card__title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(32px, 3vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 48;
+}
+.news-card__title a { text-decoration: none; }
+.news-card__title a:hover { color: var(--gold-text); }
+.news-card__excerpt { max-width: 480px; font-size: 17px; color: var(--muted); }
+.news-card .link-line { margin-top: 10px; }
+
+/* W2. Treść wpisu na szerokość treści strony: zdjęcia i cytat na całą szerokość,
+   akapity i śródtytuły ograniczone do wygodnej długości wiersza */
+.post__wrap { padding-top: clamp(64px, 7vw, 112px); }
+.post__body > :is(p, h2) { max-width: 860px; }
+
+.post__body > * + * { margin-top: 24px; }
+.post__body p { font-size: 17px; line-height: 1.75; }
+.post__body .lead { font-size: clamp(22px, 1.9vw, 28px); line-height: 1.45; }
+.post__body h2 {
+  margin-top: clamp(48px, 5vw, 72px);
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(30px, 2.6vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 48;
+}
+.post__body > h2 + * { margin-top: 20px; }
+.post__body > .link-line { margin-top: 28px; }
+
+.post__body > .post-figure { margin-block: clamp(36px, 4vw, 56px); }
+.post-figure { margin: 0; }
+.post-figure img { width: 100%; height: auto; }
+.post-figure figcaption { margin-top: 12px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.post-figure--pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(12px, 1.4vw, 20px); }
+.post-figure--pair figure { margin: 0; }
+
+.post__body > .post-quote { margin-block: clamp(40px, 5vw, 64px); }
+.post-quote { margin: 0; padding-left: clamp(20px, 3vw, 40px); border-left: 1px solid var(--gold); }
+.post__body .post-quote p {
+  font-family: var(--font-serif);
+  font-size: clamp(26px, 2.4vw, 34px);
+  line-height: 1.3;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+
+@media (max-width: 860px) {
+  .news-card { grid-template-columns: 1fr; row-gap: 24px; }
+  .post__body p { font-size: 16px; }
+}
+
+/* ==========================================================
+   PODSTRONA: KONTAKT
+   Hero jak w Mieszkaniach, potem dane kontaktowe + formularz na bieli, mapa, stopka.
+   ========================================================== */
+
+.contact-page__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  column-gap: clamp(48px, 8vw, 140px);
+  align-items: start;
+}
+.contact-page__lead { margin-top: 24px; max-width: 460px; color: var(--muted); }
+
+/* Dane kontaktowe: etykieta w złocie + wartość, cienkie linie jak w liście cech */
+.contact-data { margin: 48px 0 0; max-width: 460px; }
+.contact-data__item { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.contact-data__item:first-child { padding-top: 0; }
+.contact-data dt { font-size: 13px; font-weight: 700; letter-spacing: .04em; color: var(--gold-text); }
+.contact-data dd { margin: 4px 0 0; font-size: 17px; line-height: 1.5; color: var(--ink); }
+.contact-data dd a { color: inherit; text-decoration: none; }
+.contact-data dd a:hover { color: var(--gold-text); }
+.contact-data__person,
+.contact-data__big {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 2.2vw, 32px);
+  line-height: 1.25;
+  font-variation-settings: "opsz" 36;
+}
+
+/* Formularz na jasnym tle (pola „z linią” jak w newsletterze) */
+.contact-page__form { display: grid; gap: 22px; padding-top: 6px; }
+.contact-page__form-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(28px, 2.4vw, 36px);
+  line-height: 1.15;
+  color: var(--ink);
+  font-variation-settings: "opsz" 36;
+}
+
+/* „Interesuje mnie” w wersji jasnej */
+.interest--light .interest__legend { color: var(--muted); }
+.interest--light .interest__item span { color: var(--muted); }
+.interest--light .interest__item:hover span,
+.interest--light .interest__item input:checked + span { color: var(--ink); }
+.interest--light .interest__item input:checked + span { border-bottom-color: var(--gold); }
+.interest--light .interest__item input:focus-visible + span { outline-color: var(--gold); }
+
+@media (max-width: 860px) {
+  .contact-page__grid { grid-template-columns: 1fr; row-gap: 64px; }
+  .contact-data { margin-top: 36px; }
+}
+
 /* ---------- Responsywność ---------- */
 
 @media (max-width: 1100px) {
@@ -1030,7 +1236,8 @@ h1, h2, h3, p { margin: 0; }
   .site-header__inner { min-height: 80px; }
   .site-header__cta { display: none; }
   .logo__tagline { display: none; }
-  .logo__mark { font-size: 22px; }
+  .logo__mark { height: 52px; }
+  .site-header.is-solid .logo__mark { height: 46px; }
 
   /* Na telefonie tekst zaczyna się ok. 43% wysokości — górna część kadru zostaje jasna */
   .hero__shade {
@@ -1052,20 +1259,27 @@ h1, h2, h3, p { margin: 0; }
   .hero__links .link-line { min-width: 0; width: 100%; }
 
   .intro__grid { grid-template-columns: 1fr; gap: 36px; }
+  .intro__image { justify-self: stretch; max-width: none; }
   .intro__label { grid-template-columns: 1fr; }
   .intro__label .monogram { order: 0; font-size: 52px; }
 
-  .photo-band { height: 62vh; min-height: 380px; }
+  .photo-band { height: 50vh; min-height: 304px; }
   .photo-band__caption { bottom: 24px; }
 
   .character__grid { grid-template-columns: 1fr; gap: 36px; }
   .character__label .monogram { font-size: 52px; }
-  .character__images { gap: 16px; }
+  .character__images { gap: 16px; grid-template-rows: none; }
+  .character__images picture { min-height: 0; }
+  .character__images img { position: static; height: auto; aspect-ratio: 3 / 2; }
+  .feature { flex: none; }
 
   .interiors__grid { grid-template-columns: 1fr; gap: 0; }
   .interiors__gallery { gap: 12px; margin-top: 40px; }
-  .interiors__item:not(.interiors__item--wide):not(.interiors__item--tall) { margin-top: 0; aspect-ratio: 4 / 5; }
-  .interiors__item--tall { aspect-ratio: 4 / 5; }
+  /* telefon: szerokie na górze, pod nim wysokie z lewej i dwa małe jedno pod drugim z prawej */
+  .interiors__gallery { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) minmax(0, 1fr); aspect-ratio: 3 / 4; gap: 8px; }
+  .interiors__item--wide { grid-column: 1 / -1; grid-row: 1; aspect-ratio: 16 / 9; }
+  .interiors__item--tall { grid-column: 1; grid-row: 2 / 4; }
+  .interiors__item--small { grid-column: 2; grid-row: auto; }
 
   .city__grid {
     grid-template-columns: 1fr;
@@ -1073,12 +1287,9 @@ h1, h2, h3, p { margin: 0; }
     grid-template-rows: auto;
     row-gap: 36px;
   }
-  .city__photos { grid-template-columns: 1.15fr 1fr; gap: 12px; }
-  .city__square { margin-top: 64px; }
+  .city__photos { gap: 12px; }
 
   .chronicle__head { grid-template-columns: 1fr; gap: 28px; }
-  .chronicle__strip { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
-  .chronicle__strip li:nth-child(even) { margin-top: 32px; }
 
   .newsletter__grid { grid-template-columns: 1fr; gap: 28px; }
   .newsletter__photos { grid-column: 1; grid-row: auto; max-width: none; gap: 12px; margin-top: 12px; }
@@ -1114,6 +1325,8 @@ h1, h2, h3, p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; transform: none; transition: none; }
+  .rise > picture, .rise img, .wipe-up > picture { clip-path: none; transform: none; transition: none; }
   .scroll-cue__line::after { animation: none; }
   .drawer__panel, .drawer__backdrop { transition: none; }
+  .btn, .btn::before { transition: none; }
 }

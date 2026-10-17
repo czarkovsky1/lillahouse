@@ -81,23 +81,58 @@
   var layers = document.querySelectorAll('[data-parallax]');
   if (layers.length && !reduceMotion) {
     var ticking = false;
+    /* Siła efektu: zdjęcie przesuwa się o 35% drogi przewijania wolniej niż strona —
+       wyraźnie „płynie” pod oknem pasa, jak tło przyklejone do ekranu */
+    var STRENGTH = 0.35;
+    function sizeLayers() {
+      var vh = window.innerHeight;
+      layers.forEach(function (layer) {
+        var h = layer.parentElement.offsetHeight;
+        var extent = Math.ceil(STRENGTH * (vh + h) / 2) + 2;
+        layer.style.top = -extent + 'px';
+        layer.style.bottom = -extent + 'px';
+      });
+    }
     function updateParallax() {
       var vh = window.innerHeight;
       layers.forEach(function (layer) {
         var box = layer.parentElement.getBoundingClientRect();
         if (box.bottom < 0 || box.top > vh) return;
-        /* -1 gdy pasek wchodzi od dołu, 1 gdy wychodzi górą */
-        var progress = (vh - box.top) / (vh + box.height) * 2 - 1;
-        layer.style.transform = 'translate3d(0,' + (progress * -8).toFixed(2) + '%,0)';
+        /* 0, gdy pas jest na środku ekranu */
+        var offset = (box.top - (vh - box.height) / 2) * -STRENGTH;
+        layer.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
       });
       ticking = false;
     }
+    sizeLayers();
     window.addEventListener('scroll', function () {
       if (!ticking) { ticking = true; requestAnimationFrame(updateParallax); }
     }, { passive: true });
-    window.addEventListener('resize', updateParallax);
+    window.addEventListener('resize', function () { sizeLayers(); updateParallax(); });
     updateParallax();
   }
+
+  /* ---------- Ruchoma galeria detali: kopia listy daje płynną pętlę ---------- */
+  document.querySelectorAll('.details__track').forEach(function (track) {
+    var list = track.querySelector('.details__list');
+    if (!list) return;
+    if (reduceMotion) {
+      /* bez ruchu: pas daje się przewinąć ręcznie */
+      track.style.animation = 'none';
+      track.parentElement.style.overflowX = 'auto';
+      return;
+    }
+    var copy = list.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    copy.querySelectorAll('img').forEach(function (img) { img.alt = ''; });
+    track.appendChild(copy);
+    /* stała prędkość ok. 40 px/s niezależnie od szerokości ekranu */
+    function setSpeed() {
+      track.style.setProperty('--marquee-duration', (list.scrollWidth / 40).toFixed(1) + 's');
+    }
+    setSpeed();
+    window.addEventListener('load', setSpeed);
+  });
 
   /* ---------- Formularze-makiety: walidacja i stan „wysłano” (bez wysyłki danych) ---------- */
   document.querySelectorAll('.js-mock-form').forEach(function (form) {
@@ -153,8 +188,18 @@
     updateButtons();
   });
 
+  /* ---------- Animate on Scroll (AOS 2.3.4): elementy z data-aos ---------- */
+  if (window.AOS) {
+    window.AOS.init({
+      duration: 800,       /* domyślnie 400 ms — wolniej, spokojniej */
+      easing: 'ease-out-cubic',
+      once: true,          /* bez ponownego chowania przy przewijaniu w górę */
+      disable: reduceMotion
+    });
+  }
+
   /* ---------- Pojawianie się sekcji ---------- */
-  var reveals = document.querySelectorAll('.reveal');
+  var reveals = document.querySelectorAll('.reveal, .rise, .wipe-up');
   if (reduceMotion || !('IntersectionObserver' in window)) {
     reveals.forEach(function (el) { el.classList.add('is-visible'); });
   } else {

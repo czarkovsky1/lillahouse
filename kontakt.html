@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kontakt — Jaracza 21, kamienica w centrum Łodzi</title>
+  <meta name="description" content="Kontakt w sprawie mieszkań w kamienicy Jaracza 21 w Łodzi: telefon, e-mail, adres i formularz. Umów oglądanie mieszkania na sprzedaż lub na wynajem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#tresc">Przejdź do treści</a>
+
+  <!-- Nagłówek (wspólny) -->
+  <header class="site-header" id="naglowek">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html" aria-label="Jaracza 21 — strona główna">
+        <span class="logo__mark">
+          <img class="logo__img logo__img--light" src="assets/img/logo-jasne.png" width="600" height="523" alt="">
+          <img class="logo__img logo__img--dark" src="assets/img/logo-ciemne.png" width="600" height="523" alt="">
+        </span>
+        <span class="logo__tagline">Odrestaurowane dziedzictwo z&nbsp;1893 roku</span>
+      </a>
+      <div class="site-header__actions">
+        <a class="btn btn--outline site-header__cta" href="#formularz">Zapytaj o&nbsp;mieszkanie</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-boczne" aria-label="Otwórz menu">
+          <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu boczne (wspólne) -->
+  <div class="drawer" id="menu-boczne" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+    <div class="drawer__backdrop" data-close></div>
+    <nav class="drawer__panel" aria-label="Główna nawigacja">
+      <button class="drawer__close" type="button" data-close aria-label="Zamknij menu">Zamknij <span aria-hidden="true">✕</span></button>
+      <ul class="drawer__list">
+        <li><a href="index.html">Strona główna</a></li>
+        <li><a href="mieszkania.html">Mieszkania</a></li>
+        <li><a href="#">Historia kamienicy</a></li>
+        <li><a href="#">Okolica</a></li>
+        <li><a href="#">Kronika</a></li>
+        <li><a href="aktualnosci.html">Aktualności</a></li>
+        <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+      </ul>
+      <div class="drawer__footer">
+        <a class="btn btn--gold" href="#formularz">Zapytaj o&nbsp;mieszkanie</a>
+        <p class="drawer__contact">
+          <span class="overline">Radosław Litwin</span>
+          <a href="tel:+48669903998">+48&nbsp;669&nbsp;903&nbsp;998</a>
+        </p>
+        <p class="drawer__address">Łódź · ul. Jaracza&nbsp;21</p>
+      </div>
+    </nav>
+  </div>
+
+  <main id="tresc">
+
+    <!-- K1. Hero podstrony (jak w Mieszkaniach; na telefonie osobny, pionowy kadr) -->
+    <section class="hero hero--page" aria-labelledby="page-title">
+      <div class="hero__media" aria-hidden="true">
+        <picture>
+          <source media="(max-width: 860px)" srcset="assets/img/kontakt-hero-mobile.webp" type="image/webp">
+          <source media="(max-width: 860px)" srcset="assets/img/kontakt-hero-mobile.jpg">
+          <source srcset="assets/img/kontakt-hero.webp" type="image/webp">
+          <img class="hero__image" src="assets/img/kontakt-hero.jpg" width="1920" height="1080" alt="">
+        </picture>
+        <div class="hero__shade"></div>
+      </div>
+
+      <div class="hero__content container">
+        <div class="hero__main">
+          <h1 class="hero__title hero__title--page" id="page-title">Kontakt</h1>
+          <p class="hero__lead hero__lead--page">Zadzwoń, napisz albo umów się na oglądanie mieszkania przy Jaracza&nbsp;21.</p>
+          <div class="hero__links">
+            <a class="link-line link-line--light" href="#formularz">Napisz do nas <span class="arrow" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- K2. Dane kontaktowe (osoba, telefon, e-mail, adres) + formularz -->
+    <section class="contact-page section section--white" aria-labelledby="contact-page-title">
+      <div class="container contact-page__grid">
+
+        <div class="contact-page__info reveal">
+          <h2 class="display" id="contact-page-title">Porozmawiajmy.</h2>
+          <p class="contact-page__lead">Chętnie odpowiemy na pytania o&nbsp;mieszkania na sprzedaż i&nbsp;na wynajem, komórki lokatorskie i&nbsp;miejsca parkingowe. Oglądanie umawiamy telefonicznie, w&nbsp;dogodnym dla Ciebie terminie.</p>
+
+          <dl class="contact-data">
+            <div class="contact-data__item">
+              <dt>Osoba do kontaktu</dt>
+              <dd class="contact-data__person">Radosław Litwin</dd>
+            </div>
+            <div class="contact-data__item">
+              <dt>Telefon</dt>
+              <dd><a class="contact-data__big" href="tel:+48669903998">+48&nbsp;669&nbsp;903&nbsp;998</a></dd>
+            </div>
+            <div class="contact-data__item">
+              <dt>E-mail</dt>
+              <dd><a href="#">e-mail — do uzupełnienia</a></dd>
+            </div>
+            <div class="contact-data__item">
+              <dt>Adres inwestycji</dt>
+              <dd>ul. Jaracza&nbsp;21<br>90-261 Łódź</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Formularz-makieta (bez wysyłki danych) -->
+        <form class="contact-page__form js-mock-form reveal" id="formularz" method="post" action="#" novalidate aria-labelledby="form-title">
+          <h2 class="contact-page__form-title" id="form-title">Napisz do nas</h2>
+
+          <div class="contact__row">
+            <div class="float">
+              <input class="float__input" id="cf-name" name="name" type="text" autocomplete="name" placeholder=" " required aria-describedby="cf-name-err">
+              <label class="float__label" for="cf-name">Imię i&nbsp;nazwisko</label>
+              <p class="field__error" id="cf-name-err" hidden>Podaj imię, żebyśmy wiedzieli, jak się zwracać.</p>
+            </div>
+            <div class="float">
+              <input class="float__input" id="cf-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder=" " required aria-describedby="cf-phone-err">
+              <label class="float__label" for="cf-phone">Telefon</label>
+              <p class="field__error" id="cf-phone-err" hidden>Podaj numer — oddzwonimy, by ustalić termin.</p>
+            </div>
+          </div>
+
+          <div class="float">
+            <input class="float__input" id="cf-email" name="email" type="email" autocomplete="email" placeholder=" ">
+            <label class="float__label" for="cf-email">E-mail <span class="float__optional">(opcjonalnie)</span></label>
+          </div>
+
+          <fieldset class="interest interest--light">
+            <legend class="interest__legend">Interesuje mnie</legend>
+            <div class="interest__options">
+              <label class="interest__item"><input type="radio" name="interest" value="zakup" checked><span>Zakup</span></label>
+              <label class="interest__item"><input type="radio" name="interest" value="najem"><span>Najem</span></label>
+              <label class="interest__item"><input type="radio" name="interest" value="nie-wiem"><span>Jeszcze nie wiem</span></label>
+            </div>
+          </fieldset>
+
+          <div class="float">
+            <textarea class="float__input float__input--area" id="cf-msg" name="message" rows="3" placeholder=" "></textarea>
+            <label class="float__label" for="cf-msg">Wiadomość <span class="float__optional">(opcjonalnie)</span></label>
+          </div>
+
+          <label class="check">
+            <input class="check__input" type="checkbox" name="consent" required aria-describedby="cf-consent-err">
+            <span class="check__box" aria-hidden="true"></span>
+            <span class="check__text">Wyrażam zgodę na kontakt w&nbsp;sprawie mojego zapytania. Szczegóły w&nbsp;<a href="#">polityce prywatności</a>.</span>
+          </label>
+          <p class="field__error" id="cf-consent-err" hidden>Zaznacz zgodę, abyśmy mogli się z&nbsp;Tobą skontaktować.</p>
+
+          <button class="btn btn--gold contact__submit" type="submit">Wyślij wiadomość <span class="arrow" aria-hidden="true">↗</span></button>
+          <p class="form-success" role="status" hidden>Dziękujemy! Odezwiemy się najszybciej, jak to możliwe.</p>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- K3. Mapa dojazdu na całą szerokość (jak na stronie głównej; na produkcji — blokada do zgody w banerze cookies) -->
+    <section class="map" aria-label="Mapa dojazdu: ul. Jaracza 21, Łódź">
+      <iframe src="https://maps.google.com/maps?q=ul.%20Jaracza%2021%2C%2090-261%20%C5%81%C3%B3d%C5%BA&amp;z=15&amp;hl=pl&amp;output=embed"
+              title="Mapa: ul. Jaracza 21, Łódź" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </section>
+
+  </main>
+
+  <!-- Stopka (wspólna) -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__divider" aria-hidden="true">
+        <span></span>
+        <svg viewBox="0 0 28 34" width="28" height="34" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M2 33V14a12 12 0 0 1 24 0v19"/><path d="M8 33V16a6 6 0 0 1 12 0v17"/><path d="M14 10v23"/>
+        </svg>
+        <span></span>
+      </div>
+
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <p class="site-footer__mark"><img src="assets/img/logo-jasne.png" width="600" height="523" alt="Jaracza 21" loading="lazy"></p>
+          <p class="site-footer__claim">Odrestaurowana kamienica z&nbsp;1893 roku, w&nbsp;której historia spotyka współczesny komfort.</p>
+        </div>
+
+        <nav class="site-footer__col" aria-label="Menu w stopce">
+          <p class="overline site-footer__heading">Menu</p>
+          <ul>
+            <li><a href="mieszkania.html">Mieszkania</a></li>
+            <li><a href="#">Historia kamienicy</a></li>
+            <li><a href="#">Okolica</a></li>
+            <li><a href="#">Kronika</a></li>
+            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="kontakt.html" aria-current="page">Kontakt</a></li>
+          </ul>
+        </nav>
+
+        <div class="site-footer__col">
+          <p class="overline site-footer__heading">Kontakt</p>
+          <ul>
+            <li>ul. Jaracza&nbsp;21, Łódź</li>
+            <li><a href="tel:+48669903998">+48&nbsp;669&nbsp;903&nbsp;998</a></li>
+            <li><a href="#">e-mail — do uzupełnienia</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <p>© 2026 Jaracza&nbsp;21</p>
+        <a href="#">Polityka prywatności</a>
+        <a class="site-footer__top" href="#">Na początek <span aria-hidden="true">↑</span></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

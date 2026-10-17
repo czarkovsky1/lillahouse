@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -17,13 +18,15 @@
   <header class="site-header" id="naglowek">
     <div class="site-header__inner container">
       <a class="logo" href="index.html" aria-label="Jaracza 21 — strona główna">
-        <span class="logo__mark">Jaracza <span class="logo__num">21</span></span>
+        <span class="logo__mark">
+          <img class="logo__img logo__img--light" src="assets/img/logo-jasne.png" width="600" height="523" alt="">
+          <img class="logo__img logo__img--dark" src="assets/img/logo-ciemne.png" width="600" height="523" alt="">
+        </span>
         <span class="logo__tagline">Odrestaurowane dziedzictwo z 1893 roku</span>
       </a>
       <div class="site-header__actions">
-        <a class="btn btn--outline site-header__cta" href="#kontakt">Zapytaj o mieszkanie <span class="arrow" aria-hidden="true">↗</span></a>
-        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-boczne">
-          <span class="menu-toggle__label">Menu</span>
+        <a class="btn btn--outline site-header__cta" href="#kontakt">Zapytaj o mieszkanie</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-boczne" aria-label="Otwórz menu">
           <span class="menu-toggle__icon" aria-hidden="true"><span></span><span></span></span>
         </button>
       </div>
@@ -41,11 +44,11 @@
         <li><a href="#">Historia kamienicy</a></li>
         <li><a href="#">Okolica</a></li>
         <li><a href="#">Kronika</a></li>
-        <li><a href="#">Aktualności</a></li>
-        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="aktualnosci.html">Aktualności</a></li>
+        <li><a href="kontakt.html">Kontakt</a></li>
       </ul>
       <div class="drawer__footer">
-        <a class="btn btn--gold" href="#kontakt">Zapytaj o mieszkanie <span class="arrow" aria-hidden="true">↗</span></a>
+        <a class="btn btn--gold" href="#kontakt">Zapytaj o mieszkanie</a>
         <p class="drawer__contact">
           <span class="overline">Radosław Litwin</span>
           <a href="tel:+48669903998">+48 669 903 998</a>
@@ -106,17 +109,17 @@
           <a class="link-line" href="#">Poznaj historię kamienicy <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
 
-        <figure class="intro__image reveal">
+        <figure class="intro__image" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
           <picture>
-            <source srcset="assets/img/fasada-dzien.webp" type="image/webp">
-            <img src="assets/img/fasada-dzien.jpg" width="1200" height="1200" loading="lazy"
-                 alt="Odnowiona fasada kamienicy Jaracza 21 z łukowym wejściem i numerem 21">
+            <source srcset="assets/img/fasada-fontanna.webp" type="image/webp">
+            <img src="assets/img/fasada-fontanna.jpg" width="960" height="1200" loading="lazy"
+                 alt="Odnowiona fasada kamienicy i fontanna na dziedzińcu">
           </picture>
         </figure>
       </div>
     </section>
 
-    <!-- 3. Przerywnik: odrestaurowane detale -->
+    <!-- 3. Przerywnik: odrestaurowane detale (paralaksa) -->
     <figure class="photo-band">
       <div class="photo-band__media" data-parallax>
         <picture>
@@ -192,25 +195,33 @@
             <a class="link-line" href="mieszkania.html">Odkryj mieszkania <span class="arrow" aria-hidden="true">↗</span></a>
           </div>
 
-          <div class="interiors__gallery reveal">
-            <figure class="interiors__item interiors__item--wide">
+          <!-- Równa siatka jak w przykładzie klienta: wysokie z lewej, szerokie u góry z prawej, dwa małe pod nim -->
+          <div class="interiors__gallery">
+            <figure class="interiors__item interiors__item--tall" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
               <picture>
-                <source srcset="assets/img/wnetrze-kuchnia.webp" type="image/webp">
-                <img src="assets/img/wnetrze-kuchnia.jpg" width="1600" height="900" loading="lazy"
-                     alt="Salon z kuchnią i drewnianą wyspą w kolorze szałwii">
+                <source srcset="assets/img/siatka-wysokie.webp" type="image/webp">
+                <img src="assets/img/siatka-wysokie.jpg" width="800" height="1200" loading="lazy"
+                     alt="Jasny pokój z wysokim oknem, biurkiem i zieloną sofą">
               </picture>
             </figure>
-            <figure class="interiors__item">
+            <figure class="interiors__item interiors__item--wide" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
               <picture>
-                <source srcset="assets/img/wnetrze-antresola.webp" type="image/webp">
-                <img src="assets/img/wnetrze-antresola.jpg" width="1000" height="750" loading="lazy"
-                     alt="Sofa w salonie, w tle zabudowa z drabiną na antresolę">
+                <source srcset="assets/img/siatka-szerokie.webp" type="image/webp">
+                <img src="assets/img/siatka-szerokie.jpg" width="1200" height="675" loading="lazy"
+                     alt="Salon z kuchnią i drewnianą wyspą, ściany w kolorze szałwii">
               </picture>
             </figure>
-            <figure class="interiors__item interiors__item--tall">
+            <figure class="interiors__item interiors__item--small" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="100">
               <picture>
-                <source srcset="assets/img/wnetrze-przedpokoj.webp" type="image/webp">
-                <img src="assets/img/wnetrze-przedpokoj.jpg" width="800" height="1000" loading="lazy"
+                <source srcset="assets/img/siatka-male-1.webp" type="image/webp">
+                <img src="assets/img/siatka-male-1.jpg" width="600" height="800" loading="lazy"
+                     alt="Sofa w salonie, w tle kuchnia i drabina na antresolę">
+              </picture>
+            </figure>
+            <figure class="interiors__item interiors__item--small" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="200">
+              <picture>
+                <source srcset="assets/img/siatka-male-2.webp" type="image/webp">
+                <img src="assets/img/siatka-male-2.jpg" width="600" height="800" loading="lazy"
                      alt="Przedpokój z kinkietami i wazonem na stoliku">
               </picture>
             </figure>
@@ -226,16 +237,15 @@
           <h2 class="display" id="city-title">Dobrze tu wracać.<br>Dobrze stąd wyruszać.</h2>
         </div>
 
-        <div class="city__photos reveal">
-          <figure class="city__arch">
+        <div class="city__photos">
+          <figure class="city__photo" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom">
             <picture>
               <source srcset="assets/img/brama.webp" type="image/webp">
               <img src="assets/img/brama.jpg" width="900" height="1126" loading="lazy"
                    alt="Widok z bramy kamienicy przez łukowe naświetle na ulicę Jaracza">
             </picture>
-            <figcaption class="overline city__caption">Przez bramę, w stronę miasta</figcaption>
           </figure>
-          <figure class="city__square">
+          <figure class="city__photo" data-aos="fade-up" data-aos-anchor-placement="bottom-bottom" data-aos-delay="120">
             <picture>
               <source srcset="assets/img/lodz-ulica.webp" type="image/webp">
               <img src="assets/img/lodz-ulica.jpg" width="800" height="800" loading="lazy"
@@ -250,9 +260,10 @@
           <a class="link-line" href="#">Poznaj okolicę <span class="arrow" aria-hidden="true">↗</span></a>
         </div>
       </div>
+
     </section>
 
-    <!-- 8. Kronika (zdjęcia tymczasowe z sesji b&w — do podmiany na fotorelację z kulis) -->
+    <!-- 8. Kronika (ruchoma galeria; zdjęcia tymczasowe z sesji — do podmiany na fotorelację z kulis) -->
     <section class="chronicle section section--white" aria-labelledby="chronicle-title">
       <div class="container">
         <div class="chronicle__head reveal">
@@ -264,13 +275,29 @@
             <a class="link-line" href="#">Zobacz kronikę <span class="arrow" aria-hidden="true">↗</span></a>
           </div>
         </div>
+      </div>
 
-        <ul class="chronicle__strip reveal">
-          <li><picture><source srcset="assets/img/kronika-1.webp" type="image/webp"><img src="assets/img/kronika-1.jpg" width="700" height="933" loading="lazy" alt="Przejazd bramny na podwórze kamienicy"></picture></li>
-          <li><picture><source srcset="assets/img/kronika-2.webp" type="image/webp"><img src="assets/img/kronika-2.jpg" width="700" height="933" loading="lazy" alt="Ceglany narożnik i odnowione podwórze"></picture></li>
-          <li><picture><source srcset="assets/img/kronika-3.webp" type="image/webp"><img src="assets/img/kronika-3.jpg" width="700" height="933" loading="lazy" alt="Klatka schodowa z żeliwną balustradą"></picture></li>
-          <li><picture><source srcset="assets/img/kronika-4.webp" type="image/webp"><img src="assets/img/kronika-4.jpg" width="700" height="933" loading="lazy" alt="Otwarta brama z łukowym naświetlem"></picture></li>
-        </ul>
+      <!-- Ruchoma galeria (ciągły przesuw, bez klikania i swipe) — tymczasowo zdjęcia z sesji, docelowo fotorelacja z kulis -->
+      <div class="details details--chronicle" aria-label="Galeria: kamienica Jaracza 21">
+        <div class="details__viewport">
+          <div class="details__track">
+            <ul class="details__list">
+              <li><picture><source srcset="assets/img/detal-01.webp" type="image/webp"><img src="assets/img/detal-01.jpg" width="570" height="760" loading="lazy" alt="Żeliwna balustrada z ornamentem"></picture></li>
+              <li><picture><source srcset="assets/img/detal-02.webp" type="image/webp"><img src="assets/img/detal-02.jpg" width="570" height="760" loading="lazy" alt="Łukowe naświetle nad drzwiami wejściowymi"></picture></li>
+              <li><picture><source srcset="assets/img/kronika-kolor-1.webp" type="image/webp"><img src="assets/img/kronika-kolor-1.jpg" width="570" height="760" loading="lazy" alt="Przejazd bramny na podwórze kamienicy"></picture></li>
+              <li><picture><source srcset="assets/img/detal-03.webp" type="image/webp"><img src="assets/img/detal-03.jpg" width="1013" height="760" loading="lazy" alt="Drewniane drzwi do mieszkań i mozaika na posadzce"></picture></li>
+              <li><picture><source srcset="assets/img/detal-04.webp" type="image/webp"><img src="assets/img/detal-04.jpg" width="570" height="760" loading="lazy" alt="Dębowa poręcz klatki schodowej"></picture></li>
+              <li><picture><source srcset="assets/img/kronika-kolor-2.webp" type="image/webp"><img src="assets/img/kronika-kolor-2.jpg" width="570" height="760" loading="lazy" alt="Ceglany narożnik i odnowione podwórze"></picture></li>
+              <li><picture><source srcset="assets/img/detal-05.webp" type="image/webp"><img src="assets/img/detal-05.jpg" width="570" height="760" loading="lazy" alt="Wykusz z łukowym oknem i sztukaterią"></picture></li>
+              <li><picture><source srcset="assets/img/detal-06.webp" type="image/webp"><img src="assets/img/detal-06.jpg" width="1013" height="760" loading="lazy" alt="Ławka pod pergolą na podwórzu"></picture></li>
+              <li><picture><source srcset="assets/img/kronika-kolor-3.webp" type="image/webp"><img src="assets/img/kronika-kolor-3.jpg" width="570" height="760" loading="lazy" alt="Klatka schodowa z żeliwną balustradą"></picture></li>
+              <li><picture><source srcset="assets/img/detal-07.webp" type="image/webp"><img src="assets/img/detal-07.jpg" width="570" height="760" loading="lazy" alt="Schody z żeliwną balustradą"></picture></li>
+              <li><picture><source srcset="assets/img/detal-08.webp" type="image/webp"><img src="assets/img/detal-08.jpg" width="570" height="760" loading="lazy" alt="Brama z łukiem na odnowionej fasadzie"></picture></li>
+              <li><picture><source srcset="assets/img/kronika-kolor-4.webp" type="image/webp"><img src="assets/img/kronika-kolor-4.jpg" width="570" height="760" loading="lazy" alt="Otwarta brama z łukowym naświetlem"></picture></li>
+              <li><picture><source srcset="assets/img/detal-09.webp" type="image/webp"><img src="assets/img/detal-09.jpg" width="1013" height="760" loading="lazy" alt="Drewniane drzwi wejściowe na podwórzu"></picture></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -298,11 +325,17 @@
         </form>
         <div class="newsletter__photos" aria-hidden="true">
           <picture><source srcset="assets/img/newsletter-drzwi.webp" type="image/webp"><img src="assets/img/newsletter-drzwi.jpg" width="700" height="875" loading="lazy" alt=""></picture>
-          <picture><source srcset="assets/img/newsletter-fontanna.webp" type="image/webp"><img src="assets/img/newsletter-fontanna.jpg" width="700" height="875" loading="lazy" alt=""></picture>
+          <picture><source srcset="assets/img/newsletter-fasada.webp" type="image/webp"><img src="assets/img/newsletter-fasada.jpg" width="700" height="875" loading="lazy" alt=""></picture>
         </div>
       </div>
     </section>
 
+    <!-- Mapa Google na całą szerokość z pinezką, przed kontaktem (makieta: osadzenie bez klucza API;
+         na produkcji — blokada do czasu zgody w banerze cookies) -->
+    <section class="map" aria-label="Mapa dojazdu: ul. Jaracza 21, Łódź">
+      <iframe src="https://maps.google.com/maps?q=ul.%20Jaracza%2021%2C%2090-261%20%C5%81%C3%B3d%C5%BA&amp;z=11&amp;hl=pl&amp;output=embed"
+              title="Mapa: ul. Jaracza 21, Łódź" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </section>
     <!-- 10. Kontakt: umów oglądanie (formularz-makieta, styl jak Le Provençal: pola z linią) -->
     <section class="contact section" id="kontakt" aria-labelledby="contact-title">
       <div class="container contact__grid">
@@ -378,7 +411,7 @@
 
       <div class="site-footer__grid">
         <div class="site-footer__brand">
-          <p class="site-footer__mark" aria-label="Jaracza 21">Jaracza <span>21</span></p>
+          <p class="site-footer__mark"><img src="assets/img/logo-jasne.png" width="600" height="523" alt="Jaracza 21" loading="lazy"></p>
           <p class="site-footer__claim">Odrestaurowana kamienica z&nbsp;1893 roku, w&nbsp;której historia spotyka współczesny komfort.</p>
         </div>
 
@@ -389,8 +422,8 @@
             <li><a href="#">Historia kamienicy</a></li>
             <li><a href="#">Okolica</a></li>
             <li><a href="#">Kronika</a></li>
-            <li><a href="#">Aktualności</a></li>
-            <li><a href="#kontakt">Kontakt</a></li>
+            <li><a href="aktualnosci.html">Aktualności</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
           </ul>
         </nav>
 
@@ -412,6 +445,7 @@
     </div>
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
